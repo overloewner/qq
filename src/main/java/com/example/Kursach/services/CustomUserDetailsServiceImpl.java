@@ -1,7 +1,7 @@
-package com.example.kursach.services;
+package com.example.Kursach.services;
 
-import com.example.kursach.entities.User;
-import com.example.kursach.repository.UserRepository;
+import com.example.Kursach.repository.UserRepository;
+import com.example.Kursach.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
     @Override
@@ -21,13 +21,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         User user = userRepository.findByEmail(email);
         if (user != null) {
-            return new org.springframework.security.core.userdetails.User(user.getEmail(),
+            return new org.springframework.security.core.userdetails.User(user.getEmail(),// на основании полученных данных формируем объект UserDetails
+                    // который позволит проверить введенный пользователем логин и пароль
+                    // и уже потом аутентифицировать пользователя
                     user.getPassword(),
                     user.getRoles().stream()
                             .map((role) -> new SimpleGrantedAuthority(role.getAuthority()))
                             .collect(Collectors.toList()));
         } else {
-            throw new UsernameNotFoundException("Invalid email or password");
+            throw new UsernameNotFoundException("неверный логин или пароль");
         }
     }
 }

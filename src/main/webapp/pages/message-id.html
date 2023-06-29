@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+     }
+ h2 {
+ font-size: 18px; /* Размер шрифта в заголовке */
+ color: #080808; /* Цвет заголовка */
+ margin-top: 0; /* Отступ сверху */
+ }
+ .container {
+ width: 600px; /* Ширина слоя */
+ margin: 0 auto; /* Выравнивнить весь блок по центру */
+ background: #f0f0f0; /* Цвет фона левой колонки */
+ }
+ .header {
+ font-size: 38px; /* Размер текста в шапке */
+ text-align: center; /* Выравнивание текст шапки по центру */
+ padding: 5px; /* Отступы внутри блока шапки */
+ background: #8fa09b; /* Цвет фона шапки */
+ color: #fff; /* Цвет текста */
+ }
+ .sidebar {
+ margin-top: 10px;
+ width: 110px; /* Ширина блока */
+ padding: 0 10px; /* Отступы внутри левого блока */
+ float: right; /* Обтекание блока по левому краю */
+ }
+ .content {
+ margin-right: 130px; /* Отступ справа */
+ padding: 10px; /* Отступы внутри правого блока */
+ background: #fff; /* Цвет фона правого блока */
+ }
+ .footer {
+ background: #8fa09b; /* Цвет фона нижнего блока-подвала */
+ color: #fff; /* Цвет текста подвала */
+ padding: 5px; /* Отступы внутри блока */
+ clear: right; /* Отменяем действие float */
+ }
+ </style>
+  </style>
+</head>
+<body style="color: white;
+  background-color: #7E57C2;">
+
+
+<div class="container" style="word-wrap: break-word;">
+  <div class="header">Мой форум</div>
+  <div class="sidebar">
+    <p><a href="/">Главная</a></p>
+    <p><a href="/login">Сменить пользователя</a></p>
+    <div th:if="${user.isAdmin}">
+    <form th:action="@{/message/delete/{id}(id=${message.getId()})}" method="post">
+      <input type="submit" value="Удалить пост"/>
+    </form>
+    </div>
+  </div>
+  <div class="content" style="color:black">
+    <center>
+    <h2 th:text="${message.title}"></h2>
+    </center>
+
+    <p th:text="${message.text}">
+
+    </p>
+
+  </div>
+
+  <div><div class="footer" th:text="${message.getNameAuthor}">&copy; </div><div class="footer" th:text="${message.getAuthor}">&copy; </div></div>
+</div>
+
+</body>
+</html>

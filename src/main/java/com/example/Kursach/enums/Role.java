@@ -1,4 +1,4 @@
-package com.example.kursach.enums;
+package com.example.Kursach.enums;
 
 import org.springframework.security.core.GrantedAuthority;
 

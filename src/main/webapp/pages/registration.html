@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <style>
+
+
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+      <style>
 * { box-sizing:border-box; }
 
 /* basic stylings ------------------------------------------ */
@@ -120,38 +122,50 @@ input:focus ~ .highlight {
 }
 
   </style>
-</head>
-<body style="color: #455A64;
+    </head>
+    <body style="color: #455A64;
   background-color: #7E57C2;">
-<div class="container">
+    <div class="container">
 
-  <h2>Авторизация на форум<small>authorization</small></h2>
-  <center><h4 th:text="${error}" style="color:red"></h4></center>
-<center>
-  <form action="/login" method="post" >
+      <h2>Регистрация<small>registration</small></h2>
+      <center>
+        <form action="/registration" method="post">
 
-    <div class="group">
-      <input type="email" name="username" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>email</label>
+          <div class="group">
+            <input type="email" name="email" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Email</label>
+          </div>
+          <div class="group">
+            <input type="password" name="password" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Придумайте пароль</label>
+          </div>
+          <div class="group">
+            <input type="text" name="phoneNumber" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Номер телефона</label>
+          </div>
+          <div class="group">
+            <input type="text" name="name" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Ваше имя</label>
+          </div>
+
+
+          <input type="submit" value="Зарегистрироваться"/>
+        </form>
+      </center>
+
+      <p class="footer">
+        <a href="/login" target="_blank">У меня уже есть аккаунт</a>
+      </p>
+
     </div>
 
-    <div class="group">
-      <input type="password" name="password" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>password</label>
-    </div>
-    <input type="submit" value="Вход"/>
-  </form>
-</center>
-
-  <p class="footer" style="text-size: 10px">
-    <a href="/registration" target="_blank">Регистрация</a>
-  </p>
-
-</div>
-
-</body>
-</html>
+    </body>
+    </html>
